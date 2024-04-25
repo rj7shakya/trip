@@ -13,3 +13,10 @@ def get_tourist():
 	rows = cursor.fetchall()
 	cursor.close()
 	return rows
+
+def add_tourist(id,name,phone_no):
+  cursor = connection.cursor()
+  cursor.execute(f"""insert into tourist
+                 values ({id},'{name}',{phone_no})""")
+  connection.commit()
+  cursor.close()

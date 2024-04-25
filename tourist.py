@@ -1,6 +1,7 @@
-from db import get_tourist
+from db import get_tourist,add_tourist
 from tkinter import *
 from tkinter import ttk
+
 
 def setup_tourist(page):
   tree = ttk.Treeview(page,columns=['a','b'])
@@ -14,6 +15,10 @@ def setup_tourist(page):
   for id,name,phone_no in data:
     tree.insert("",END,values=(name,phone_no))
     
+  l3 = Label(page,text='Id')
+  l3.pack()
+  e3 = Entry(page)
+  e3.pack()
   
   l1 = Label(page,text='name')
   l1.pack()
@@ -25,7 +30,14 @@ def setup_tourist(page):
   e2 = Entry(page)
   e2.pack()
   
-  b1 = Button(page,text='Add Tourist')
+  def on_add():
+    add_tourist(e3.get(),e1.get(),e2.get())
+    tree.insert("",END,values=(e1.get(),e2.get()))
+    e1.delete(0,END)
+    e2.delete(0,END)
+    e3.delete(0,END)
+  
+  b1 = Button(page,text='Add Tourist',command=on_add)
   b1.pack()
   
   
