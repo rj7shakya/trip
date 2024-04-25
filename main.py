@@ -15,7 +15,7 @@ tab.pack(expand = 1, fill ="both")
 
 from tourist import setup_tourist
 
-setup_tourist()
+setup_tourist(tourist_page)
 
 
 root.geometry('500x500')
